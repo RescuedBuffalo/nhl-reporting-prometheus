@@ -1,17 +1,9 @@
 global:
-  scrape_interval: 15s
+  scrape_interval: 15s  # How often to scrape targets by default.
 
 scrape_configs:
   - job_name: 'flask-app'
-    scrape_interval: 15s
     static_configs:
-      - targets: ['https://nhl-reporting-app-b1fe017be8db.herokuapp.com/']
-        metrics_path: '/metrics'
-        scheme: 'https'
-
-alerting:
-  alertmanagers:
-    - static_configs:
-        - targets: ['alertmanager:9093']
-  rule_files:
-    - "alert.rules"
+      - targets: ['nhl-reporting-app.herokuapp.com:443']  # Replace with your app's metrics endpoint
+        labels:
+          env: production
