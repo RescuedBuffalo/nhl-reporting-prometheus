@@ -1,8 +1,16 @@
 global:
-  scrape_interval: 10s
+  scrape_interval: 15s  # How often to scrape targets by default
+  evaluation_interval: 15s  # How often to evaluate rules
 
 scrape_configs:
+  # Scrape configuration for Prometheus itself
   - job_name: 'prometheus'
-    scrape_interval: 5s
     static_configs:
-      - targets: ['https://nhl-reporting-app-b1fe017be8db.herokuapp.com/metrics']
+      - targets: ['localhost:9090']
+
+  # Scrape configuration for NHL reporting app
+  - job_name: 'nhl-reporting-app'
+    static_configs:
+      - targets: ['nhl-reporting-app-b1fe017be8db.herokuapp.com']
+        metrics_path: /metrics
+        scheme: https
