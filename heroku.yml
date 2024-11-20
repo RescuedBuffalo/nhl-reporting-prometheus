@@ -1,0 +1,6 @@
+build:
+  docker:
+    web: Dockerfile
+
+run:
+  web: --config.file=/etc/prometheus/prometheus.yml --web.listen-address=0.0.0.0:$PORT --storage.tsdb.path=/prometheus
