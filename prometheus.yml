@@ -11,4 +11,4 @@ scrape_configs:
   # Scrape configuration for NHL reporting app
   - job_name: 'nhl-reporting-app'
     static_configs:
-      - targets: ['nhl-reporting-app-b1fe017be8db.herokuapp.com']
+      - targets: ['nhl-reporting-app-b1fe017be8db.herokuapp.com:5000']
